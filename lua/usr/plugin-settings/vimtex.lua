@@ -17,7 +17,9 @@ g.vimtex_view_method = 'zathura'
 --g.vimtex_view_general_options_latexmk = '-reuse-instance'
 
 g.vimtex_quickfix_mode=0
-g.vimtex_imaps_leader="´"
+g.vimtex_imaps_enabled=0
+--[[ Imaps, now disabled and managed with luasnip
+-- g.vimtex_imaps_leader="´"
 -- Add custom mapping through vimtex#imap#add_map
 g.vimtex_imaps_disabled = {'jj', 'jJ', 'jk', 'jK', 'jh', 'jH', 'jl', 'jL', 'e', 'q'}
 
@@ -54,7 +56,8 @@ vim.cmd([[
     \ 'lhs' : '+',
     \ 'rhs' : '\dagger',
     \})
-]])
+)
+]]
 
 -- vimtex-folding
 --[[ -- g.vimtex_fold_manual=1

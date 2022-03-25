@@ -12,10 +12,12 @@ inoremap <C-b> \textbf{}<left>
 "let b:autopairs_enabled = 0
 let b:AutoPairs = {'(':')', '[':']', '{':'}','|':'|'}
 
+syntax on
 " highlight Conceal guifg=#FF7733
 " highlight Conceal guifg=#E6B673
 "highlight SpellBad gui=undercurl guifg=#FF3333 guisp=Red
 highlight SpellBad gui=undercurl guisp=Red
 
+set conceallevel=0
 " make completion only after 3-letter words
 lua require('cmp').setup.buffer({completion = {keyword_length = 3}})

@@ -17,12 +17,14 @@ local map = vim.api.nvim_set_keymap
 -- map('t', ...)
 
 -- General mappings ---------------------------------------------
+lvim.keys.normal_mode["<C-t>"] = ':!tmux split-window<CR>'
+lvim.builtin.which_key.mappings["<leader>"] = { "<cmd>Telescope resume<CR>", "Resume Telescope" }
 -- breaks the line in the current possition
 lvim.keys.normal_mode["zn"] = 'a<cr><esc>k$'
 lvim.keys.normal_mode["] "] = [[mno<esc>`n]]
 lvim.keys.normal_mode["[ "] = [[mnO<esc>`n]]
 --Clear search highlight
-map('n', '<leader><space>', ':nohlsearch<CR>', {noremap = true, silent = true})
+-- map('n', '<leader>,', ':nohlsearch<CR>', {noremap = true, silent = true})
 --Use Y in normal mode to copy until end of line
 map('n', 'Y', 'y$', {noremap = true})
 
@@ -41,6 +43,11 @@ map('n', [[<C-Down>]], [[<C-Y>]], {noremap = true})
 -- Changing buffers
 map('n', [[<M-C-L>]], [[:bnext!<CR>]], {noremap = true})
 map('n', [[<M-C-H>]], [[:bprev!<CR>]], {noremap = true})
+-- tab completion (not working)
+-- map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+-- map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+-- map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+-- map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 -- Plugin mappings ----------------------------------------------
 -- TODO-Comments
@@ -64,6 +71,17 @@ map('n', [[<M-C-H>]], [[:bprev!<CR>]], {noremap = true})
 --   },
 -- }
 
+-- Quit all windows
+lvim.builtin.which_key.mappings["Q"]= {":qa<CR>", "Exit nvim"}
+-- Sessions with auto-sessions and session-lens
+lvim.builtin.which_key.mappings["S"]= {"<cmd>SearchSession<CR>", "Sessions"}
+-- Sessions with persistence
+-- lvim.builtin.which_key.mappings["S"]= {
+--   name = "Session",
+--   c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+--   l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+--   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
+-- }
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {

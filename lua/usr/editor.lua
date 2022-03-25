@@ -1,4 +1,3 @@
-
 local opt = vim.opt
 local g = vim.g
 local cmd = vim.cmd
@@ -10,6 +9,8 @@ g.maplocalleader = ','
 
 opt.cursorlineopt = 'screenline'
 opt.encoding = 'utf-8'
+opt.clipboard = ''
+opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 --[[
   tabstop:          Width of tab character
@@ -35,8 +36,13 @@ opt.number = true
 -- search options
 opt.incsearch = true
 opt.hlsearch = true
+-- Font for gui (neovide)
+opt.guifont = 'MesloLGS_NF:h10'
 
 -- When editing a file, always jump to the last known cursor position.
 cmd([[
-au BufReadPost * silent! if line("'\"") > 0 && line("'\"") <= line("$") | silent! exe "normal g'\"zz" | endif
+au BufReadPost * silent! if line("'\"") > 0 && line("'\"") <= line("$") | silent! exe "normal g`\"zz" | endif
 ]])
+
+-- g.bufferline = {icons = 'numbers'}
+g.bufferline = {icons = 'numbers'}

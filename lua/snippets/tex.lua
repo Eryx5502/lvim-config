@@ -104,6 +104,17 @@ local function wrap(args)
   )
 end
 
+local function imap(trigger, command)
+  return s(
+    {trig = '´' .. trigger, wordTrig = false},
+    {
+      t('\\' .. command),
+      i(0)
+    },
+    {condition = ismath}
+    )
+end
+
 local tex = {}
 tex.snippets = {
   s(
@@ -214,7 +225,7 @@ tex.snippets = {
   s(
     "enum",
     {
-      t({"\\begin{enumerate}[label=\\textit{(\\roman*)},nosep,leftmargin=*]", "  \\item"}),
+      t({"\\begin{enumerate}[label=\\textit{(\\roman*)},nosep,leftmargin=*]", "  \\item "}),
       i(0),
       t({"","\\end{enumerate}"})
     }
@@ -232,15 +243,15 @@ tex.snippets = {
 
 tex.autosnippets = {
   -- Math regions
-  s(
-    "$",
-    {
-      t("$"),
-      i(1),
-      t("$"),
-      i(0),
-    }
-  ),
+  -- s(
+  --   "$",
+  --   {
+  --     t("$"),
+  --     i(1),
+  --     t("$"),
+  --     i(0),
+  --   }
+  -- ),
   s(
     "eqq",
     {
@@ -359,18 +370,64 @@ tex.autosnippets = {
   wrap({trigger = 'over', command = 'overline'}),
   -- commands
   command({trigger = ':=', command = 'coloneqq', condition = ismath, noargs = true}),
+  command({trigger = '!=', command = 'neq', condition = ismath, noargs = true}),
   command({trigger = '<=', command = 'leq', condition = ismath, noargs = true}),
   command({trigger = '>=', command = 'geq', condition = ismath, noargs = true}),
   command({trigger = 'cc', command = 'subset', condition = ismath, noargs = true}),
   command({trigger = 'too', command = 'to', noargs = true, condition = ismath}),
   command({trigger = 'mapss', command = 'mapsto', noargs = true, condition = ismath}),
   command({trigger = 'inn', command = 'in', noargs = true, condition = ismath}),
+  command({trigger = 'ninn', command = 'notin', noargs = true, condition = ismath}),
   command({command = 'hat', condition = ismath}),
   command({command = 'dot', condition = ismath}),
   command({trigger = 'over', command = 'overline', condition = ismath}),
   command({trigger = 'bb', command = 'mathbb', condition = ismath}),
   command({trigger = 'cal', command = 'mathcal', condition = ismath}),
   command({trigger = 'bold', command = 'boldsymbol', condition = ismath}),
+  command({trigger = 'tt', command = 'text', condition = ismath}),
+  command({trigger = 'sq', command = 'sqrt', condition = ismath}),
+  -- Greek letters (imaps from vimtex are now removed)
+  imap('a', 'alpha'),
+  imap('A', 'Alpha'),
+  imap('b', 'beta'),
+  imap('B', 'Beta'),
+  imap('c', 'chi'),
+  imap('d', 'delta'),
+  imap('D', 'Delta'),
+  imap('e', 'varepsilon'),
+  imap('E', 'exists'),
+  imap('f', 'phi'),
+  imap('F', 'Phi'),
+  imap('g', 'gamma'),
+  imap('G', 'Gamma'),
+  imap('h', 'eta'),
+  imap('i', 'ipsilon'),
+  imap('j', 'varphi'),
+  imap('k', 'kappa'),
+  imap('l', 'lambda'),
+  imap('L', 'Lambda'),
+  imap('m', 'mu'),
+  imap('n', 'nu'),
+  imap('o', 'omega'),
+  imap('O', 'Omega'),
+  imap('p', 'pi'),
+  imap('P', 'Pi'),
+  imap('q', 'theta'),
+  imap('Q', 'Theta'),
+  imap('r', 'rho'),
+  imap('s', 'sigma'),
+  imap('S', 'Sigma'),
+  imap('t', 'tau'),
+  imap('u', 'upsilon'),
+  imap('v', 'vartheta'),
+  imap('x', 'xi'),
+  imap('X', 'Xi'),
+  imap('y', 'psi'),
+  imap('Y', 'Psi'),
+  imap('z', 'zeta'),
+  imap('8', 'infty'),
+  imap('6', 'partial'),
+  imap('+', 'dagger'),
 }
 
 return tex
