@@ -52,8 +52,10 @@ local opts = {
       's',
     }),
   },
-  documentation = {
-    winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
+  window = {
+    documentation = {
+      winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
+    },
   },
   experimental = {
     ghost_text = true,

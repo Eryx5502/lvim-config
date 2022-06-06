@@ -13,6 +13,7 @@ luasnip.snippets = {
   all = {},
   html = {},
 }
+-- luasnip.autosnippets = {}
 
 require('snippets')
 

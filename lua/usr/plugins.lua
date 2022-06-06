@@ -33,9 +33,6 @@ lvim.plugins = {
   -- Symbol navigation
   {
     'stevearc/aerial.nvim',
-    config = function ()
-      require('usr.plugin-settings.aerial')
-    end
   },
   {
     'kkoomen/vim-doge',
