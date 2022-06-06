@@ -70,6 +70,7 @@ lvim.plugins = {
     requires = 'nvim-lua/plenary.nvim',
     config = require("todo-comments").setup{}
   },
+  {'dhruvasagar/vim-zoom'},
   -- LaTeX
   {
     'lervag/vimtex',

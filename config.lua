@@ -26,6 +26,7 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
 lvim.builtin.project.patterns = { ".git" }
 lvim.builtin.project.detection_methods = { "pattern" }
+lvim.builtin.lualine.sections.lualine_c = { "aerial" }
 -- lvim.builtin.lualine.options.globalstatus = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
