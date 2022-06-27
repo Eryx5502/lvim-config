@@ -13,12 +13,15 @@ local d = ls.dynamic_node
 -- Function for defining environment snippets
 local function environment(trigger, name)
   return s(
-    {trig = "^(%s*)" .. trigger, regTrig = true},
+    { trig = "^(%s*)" .. trigger, regTrig = true },
     {
       f(regex_cap_group(1), {}),
-      t({"\\begin{" .. name .. "}", "  "}),
+      t({ "\\begin{" .. name .. "}", "  " }),
+      f(regex_cap_group(1), {}),
       i(0),
-      t({"","\\end{" .. name .. "}"}),
+      t({ "", "" }),
+      f(regex_cap_group(1), {}),
+      t({ "\\end{" .. name .. "}" }),
     }
   )
 end
@@ -30,7 +33,7 @@ local function mathbb(content)
     {
       t('\\mathbb{' .. content .. '}'), i(0)
     },
-    {condition = ismath}
+    { condition = ismath }
   )
 end
 
@@ -61,7 +64,7 @@ local function command(args)
         t('\\' .. command),
         i(0)
       },
-      {condition = condition}
+      { condition = condition }
     )
   else
     snip = s(
@@ -72,12 +75,13 @@ local function command(args)
         t('}'),
         i(0)
       },
-      {condition = condition}
+      { condition = condition }
     )
 
   end
   return snip
 end
+
 -- Function for defining snippets as wordtrig -> \trig{word}
 -- args can be either a trigger or {trigger='...', command='...'}
 local function wrap(args)
@@ -93,26 +97,26 @@ local function wrap(args)
   end
 
   return s(
-    {trig = '([^${} ]+)' .. trigger, regTrig = true},
+    { trig = '([^${} ]+)' .. trigger, regTrig = true },
     {
       t("\\" .. command .. "{"),
       f(regex_cap_group(1), {}),
       t("}"),
       i(0),
     },
-    {condition = ismath}
+    { condition = ismath }
   )
 end
 
 local function imap(trigger, command)
   return s(
-    {trig = '´' .. trigger, wordTrig = false},
+    { trig = '´' .. trigger, wordTrig = false },
     {
       t('\\' .. command),
       i(0)
     },
-    {condition = ismath}
-    )
+    { condition = ismath }
+  )
 end
 
 local tex = {}
@@ -225,17 +229,17 @@ tex.snippets = {
   s(
     "enum",
     {
-      t({"\\begin{enumerate}[label=\\textit{(\\roman*)},nosep,leftmargin=*]", "  \\item "}),
+      t({ "\\begin{enumerate}[label=\\textit{(\\roman*)},nosep,leftmargin=*]", "  \\item " }),
       i(0),
-      t({"","\\end{enumerate}"})
+      t({ "", "\\end{enumerate}" })
     }
   ),
   s(
     "item",
     {
-      t({"\\begin{itemize}", "  \\item"}),
+      t({ "\\begin{itemize}", "  \\item" }),
       i(0),
-      t({"","\\end{itemize}"})
+      t({ "", "\\end{itemize}" })
     }
   ),
   s("i", t("\\item")),
@@ -255,9 +259,9 @@ tex.autosnippets = {
   s(
     "eqq",
     {
-      t({"\\begin{equation*}", "  "}),
+      t({ "\\begin{equation*}", "  " }),
       i(1),
-      t({"","\\end{equation*}"}),
+      t({ "", "\\end{equation*}" }),
       i(0),
     }
   ),
@@ -265,10 +269,10 @@ tex.autosnippets = {
   s(
     "beg",
     {
-      t("\\begin{"),i(1, "env"), t({"}", "  "}),
+      t("\\begin{"), i(1, "env"), t({ "}", "  " }),
       i(0),
-      t({"",""}),
-      f(function(args, snip) return "\\end{" .. args[1][1] .. "}" end, {1}),
+      t({ "", "" }),
+      f(function(args, snip) return "\\end{" .. args[1][1] .. "}" end, { 1 }),
     }
   ),
   -- Theorem-like environments
@@ -298,7 +302,7 @@ tex.autosnippets = {
       t("\\rangle"),
       i(0),
     },
-    {condition = ismath}
+    { condition = ismath }
   ),
   s(
     "\\|",
@@ -308,7 +312,7 @@ tex.autosnippets = {
       t("\\|"),
       i(0),
     },
-    {condition = ismath}
+    { condition = ismath }
   ),
   s(
     "set",
@@ -318,30 +322,30 @@ tex.autosnippets = {
       t("\\}"),
       i(0),
     },
-    {condition = ismath}
+    { condition = ismath }
   ),
   s(
-    {trig = '^^', wordTrig = false},
+    { trig = '^^', wordTrig = false },
     {
       t("^{"),
       i(1),
       t("}"),
       i(0),
     },
-    {condition = ismath}
+    { condition = ismath }
   ),
   s(
-    {trig = '__', wordTrig = false},
+    { trig = '__', wordTrig = false },
     {
       t("_{"),
       i(1),
       t("}"),
       i(0),
     },
-    {condition = ismath}
+    { condition = ismath }
   ),
   s(
-    {trig = '([^$ ]+)/', regTrig = true},
+    { trig = '([^$ ]+)/', regTrig = true },
     {
       t("\\frac{"),
       f(regex_cap_group(1), {}),
@@ -350,7 +354,7 @@ tex.autosnippets = {
       t('}'),
       i(0),
     },
-    {condition = ismath}
+    { condition = ismath }
   ),
   s(
     '//',
@@ -362,30 +366,30 @@ tex.autosnippets = {
       t('}'),
       i(0),
     },
-    {condition = ismath}
+    { condition = ismath }
   ),
   -- wrappers
-  wrap({trigger = 'hatt', command = 'hat'}),
-  wrap({trigger = 'dott', command = 'dot'}),
-  wrap({trigger = 'over', command = 'overline'}),
+  wrap({ trigger = 'hatt', command = 'hat' }),
+  wrap({ trigger = 'dott', command = 'dot' }),
+  wrap({ trigger = 'over', command = 'overline' }),
   -- commands
-  command({trigger = ':=', command = 'coloneqq', condition = ismath, noargs = true}),
-  command({trigger = '!=', command = 'neq', condition = ismath, noargs = true}),
-  command({trigger = '<=', command = 'leq', condition = ismath, noargs = true}),
-  command({trigger = '>=', command = 'geq', condition = ismath, noargs = true}),
-  command({trigger = 'cc', command = 'subset', condition = ismath, noargs = true}),
-  command({trigger = 'too', command = 'to', noargs = true, condition = ismath}),
-  command({trigger = 'mapss', command = 'mapsto', noargs = true, condition = ismath}),
-  command({trigger = 'inn', command = 'in', noargs = true, condition = ismath}),
-  command({trigger = 'ninn', command = 'notin', noargs = true, condition = ismath}),
-  command({command = 'hat', condition = ismath}),
-  command({command = 'dot', condition = ismath}),
-  command({trigger = 'over', command = 'overline', condition = ismath}),
-  command({trigger = 'bb', command = 'mathbb', condition = ismath}),
-  command({trigger = 'cal', command = 'mathcal', condition = ismath}),
-  command({trigger = 'bold', command = 'boldsymbol', condition = ismath}),
-  command({trigger = 'tt', command = 'text', condition = ismath}),
-  command({trigger = 'sq', command = 'sqrt', condition = ismath}),
+  command({ trigger = ':=', command = 'coloneqq', condition = ismath, noargs = true }),
+  command({ trigger = '!=', command = 'neq', condition = ismath, noargs = true }),
+  command({ trigger = '<=', command = 'leq', condition = ismath, noargs = true }),
+  command({ trigger = '>=', command = 'geq', condition = ismath, noargs = true }),
+  command({ trigger = 'cc', command = 'subset', condition = ismath, noargs = true }),
+  command({ trigger = 'too', command = 'to', noargs = true, condition = ismath }),
+  command({ trigger = 'mapss', command = 'mapsto', noargs = true, condition = ismath }),
+  command({ trigger = 'inn', command = 'in', noargs = true, condition = ismath }),
+  command({ trigger = 'ninn', command = 'notin', noargs = true, condition = ismath }),
+  command({ command = 'hat', condition = ismath }),
+  command({ command = 'dot', condition = ismath }),
+  command({ trigger = 'over', command = 'overline', condition = ismath }),
+  command({ trigger = 'bb', command = 'mathbb', condition = ismath }),
+  command({ trigger = 'cal', command = 'mathcal', condition = ismath }),
+  command({ trigger = 'bold', command = 'boldsymbol', condition = ismath }),
+  command({ trigger = 'tt', command = 'text', condition = ismath }),
+  command({ trigger = 'sq', command = 'sqrt', condition = ismath }),
   -- Greek letters (imaps from vimtex are now removed)
   imap('a', 'alpha'),
   imap('A', 'Alpha'),
