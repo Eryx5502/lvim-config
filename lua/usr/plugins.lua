@@ -1,12 +1,12 @@
 lvim.plugins = {
   -- General
-  {"folke/tokyonight.nvim"},
+  { "folke/tokyonight.nvim" },
   {
     'rmagatti/auto-session',
     config = function()
       require('auto-session').setup {
         log_level = 'info',
-        auto_session_suppress_dirs = {'~/'},
+        auto_session_suppress_dirs = { '~/' },
         auto_save_enabled = true,
         auto_restore_enabled = true,
       }
@@ -14,7 +14,7 @@ lvim.plugins = {
   },
   {
     'rmagatti/session-lens',
-    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+    requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
     config = function()
       require('session-lens').setup({})
     end
@@ -41,11 +41,11 @@ lvim.plugins = {
       vim.g.doge_doc_standard_python = 'numpy'
     end,
   },
-  {'ggandor/lightspeed.nvim'},
-  {'christoomey/vim-tmux-navigator'},
+  { 'ggandor/lightspeed.nvim' },
+  { 'christoomey/vim-tmux-navigator' },
   -- {'edkolev/tmuxline.vim'},
   -- {'zhou13/vim-easyescape'},
-  {'tpope/vim-surround'},
+  { 'tpope/vim-surround' },
   -- {{{ fugitive.vim - premier git plugin for vim
   {
     "tpope/vim-fugitive",
@@ -65,15 +65,27 @@ lvim.plugins = {
   {
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
-    config = require("todo-comments").setup{}
+    config = require("todo-comments").setup {}
   },
-  {'dhruvasagar/vim-zoom'},
+  { 'dhruvasagar/vim-zoom' },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufRead",
+    setup = function()
+      vim.g.indentLine_enabled = 1
+      vim.g.indent_blankline_char = "▏"
+      vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "dashboard", "latex", "tex" }
+      vim.g.indent_blankline_buftype_exclude = { "terminal" }
+      vim.g.indent_blankline_show_trailing_blankline_indent = false
+      vim.g.indent_blankline_show_first_indent_level = false
+    end
+  },
   -- LaTeX
   {
     'lervag/vimtex',
     opt = false,
     requires = 'KeitaNakamura/tex-conceal.vim',
-    config = function ()
+    config = function()
       require('usr.plugin-settings.vimtex')
     end
   },
@@ -86,7 +98,14 @@ lvim.plugins = {
     cmd = "TroubleToggle",
   },
   -- Handlebars (For FoundryVtt)
-  {'mustache/vim-mustache-handlebars'}
+  { 'mustache/vim-mustache-handlebars' },
+  -- HTML
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
   --[[ -- Python
   'numirias/semshi', {'do': ':UpdateRemotePlugins'},
   'jeetsukumaran/vim-pythonsense', {'for': 'python'},
