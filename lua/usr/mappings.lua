@@ -26,23 +26,27 @@ lvim.keys.normal_mode["[ "] = [[mnO<esc>`n]]
 --Clear search highlight
 -- map('n', '<leader>,', ':nohlsearch<CR>', {noremap = true, silent = true})
 --Use Y in normal mode to copy until end of line
-map('n', 'Y', 'y$', {noremap = true})
+map('n', 'Y', 'y$', { noremap = true })
+
+-- Comments (temp solution for gcc)
+lvim.builtin.comment.toggler.line = 'gccc'
+map('n', [[gcc]], [[Vgc<esc>]], { noremap = false })
 
 -- Moving lines
-map('n', [[<M-C-J>]], [[:m .+1<CR>==]], {noremap = true})
-map('n', [[<M-C-K>]], [[:m .-2<CR>==]], {noremap = true})
-map('i', [[<M-C-J>]], [[<Esc>:m .+1<CR>==gi]], {noremap = true})
-map('i', [[<M-C-K>]], [[<Esc>:m .-2<CR>==gi]], {noremap = true})
-map('v', [[<M-C-J>]], [[:m '>+1<CR>gv=gv]], {noremap = true})
-map('v', [[<M-C-K>]], [[:m '<-2<CR>gv=gv]], {noremap = true})
+map('n', [[<M-C-J>]], [[:m .+1<CR>==]], { noremap = true })
+map('n', [[<M-C-K>]], [[:m .-2<CR>==]], { noremap = true })
+map('i', [[<M-C-J>]], [[<Esc>:m .+1<CR>==gi]], { noremap = true })
+map('i', [[<M-C-K>]], [[<Esc>:m .-2<CR>==gi]], { noremap = true })
+map('v', [[<M-C-J>]], [[:m '>+1<CR>gv=gv]], { noremap = true })
+map('v', [[<M-C-K>]], [[:m '<-2<CR>gv=gv]], { noremap = true })
 -- Moving screen without moving the cursor
-map('i', [[<C-Up>]], [[<C-O><C-E>]], {noremap = true})
-map('i', [[<C-Down>]], [[<C-O><C-Y>]], {noremap = true})
-map('n', [[<C-Up>]], [[<C-E>]], {noremap = true})
-map('n', [[<C-Down>]], [[<C-Y>]], {noremap = true})
+map('i', [[<C-Up>]], [[<C-O><C-E>]], { noremap = true })
+map('i', [[<C-Down>]], [[<C-O><C-Y>]], { noremap = true })
+map('n', [[<C-Up>]], [[<C-E>]], { noremap = true })
+map('n', [[<C-Down>]], [[<C-Y>]], { noremap = true })
 -- Changing buffers
-map('n', [[<M-C-L>]], [[:bnext!<CR>]], {noremap = true})
-map('n', [[<M-C-H>]], [[:bprev!<CR>]], {noremap = true})
+map('n', [[<M-C-L>]], [[:bnext!<CR>]], { noremap = true })
+map('n', [[<M-C-H>]], [[:bprev!<CR>]], { noremap = true })
 -- tab completion (not working)
 -- map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 -- map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
@@ -72,9 +76,9 @@ map('n', [[<M-C-H>]], [[:bprev!<CR>]], {noremap = true})
 -- }
 
 -- Quit all windows
-lvim.builtin.which_key.mappings["Q"]= {":qa<CR>", "Exit nvim"}
+lvim.builtin.which_key.mappings["Q"] = { ":qa<CR>", "Exit nvim" }
 -- Sessions with auto-sessions and session-lens
-lvim.builtin.which_key.mappings["S"]= {"<cmd>SearchSession<CR>", "Sessions"}
+lvim.builtin.which_key.mappings["S"] = { "<cmd>SearchSession<CR>", "Sessions" }
 -- Sessions with persistence
 -- lvim.builtin.which_key.mappings["S"]= {
 --   name = "Session",
