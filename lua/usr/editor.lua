@@ -5,7 +5,7 @@ local cmd = vim.cmd
 -- General -------------------------------------------------------------------
 -- Default leader is <space>
 g.mapleader = ' '
-g.maplocalleader = ','
+g.maplocalleader = 'ñ'
 
 opt.cursorlineopt = 'screenline'
 opt.encoding = 'utf-8'
