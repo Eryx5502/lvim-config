@@ -21,8 +21,10 @@ lvim.lsp.float.focusable = true
 -- lvim.builtin.dashboard.active = true
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
-lvim.builtin.terminal.open_mapping = '<C-M-T>'
--- lvim.builtin.terminal.float_opts.width = 90 -- this is absolute width, cant exceed pane
+lvim.builtin.terminal.open_mapping = '<C-T>'
+lvim.builtin.terminal.float_opts.width = function(term)
+  return math.min(math.floor(vim.o.columns * 0.9), 150)
+end
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
 lvim.builtin.project.patterns = { ".git" }

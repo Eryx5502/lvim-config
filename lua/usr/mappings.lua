@@ -17,7 +17,6 @@ local map = vim.api.nvim_set_keymap
 -- map('t', ...)
 
 -- General mappings ---------------------------------------------
-lvim.keys.normal_mode["<C-t>"] = ':!tmux split-window<CR>'
 lvim.builtin.which_key.mappings["<leader>"] = { "<cmd>Telescope resume<CR>", "Resume Telescope" }
 -- breaks the line in the current possition
 lvim.keys.normal_mode["zn"] = 'a<cr><esc>k$'
