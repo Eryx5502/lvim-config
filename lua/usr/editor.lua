@@ -10,7 +10,7 @@ g.maplocalleader = 'ñ'
 opt.cursorlineopt = 'screenline'
 opt.encoding = 'utf-8'
 opt.clipboard = ''
-opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 --[[
   tabstop:          Width of tab character
@@ -18,26 +18,26 @@ opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,term
   shiftwidth        Determines the amount of whitespace to add in normal mode
   expandtab:        When on uses space instead of tabs
 ]]
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth  = 2
-opt.expandtab = true
+opt.tabstop        = 2
+opt.softtabstop    = 2
+opt.shiftwidth     = 2
+opt.expandtab      = true
 -- Word wrapping
-opt.textwidth = 80
-opt.wrap = true
-opt.linebreak = true
-opt.list = false
+opt.textwidth      = 80
+opt.wrap           = true
+opt.linebreak      = true
+opt.list           = false
 -- Smart word weapping
 --g.showbreak   =↳
-opt.breakindent = true
+opt.breakindent    = true
 opt.breakindentopt = 'sbr'
 -- line numbers
-opt.number = true
+opt.number         = true
 -- search options
-opt.incsearch = true
-opt.hlsearch = true
+opt.incsearch      = true
+opt.hlsearch       = true
 -- Font for gui (neovide)
-opt.guifont = 'MesloLGS_NF:h10'
+opt.guifont        = 'MesloLGS_NF:h10'
 
 -- When editing a file, always jump to the last known cursor position.
 cmd([[
@@ -45,4 +45,4 @@ au BufReadPost * silent! if line("'\"") > 0 && line("'\"") <= line("$") | silent
 ]])
 
 -- g.bufferline = {icons = 'numbers'}
-g.bufferline = {icons = 'numbers'}
+g.bufferline = { icons = 'numbers' }
