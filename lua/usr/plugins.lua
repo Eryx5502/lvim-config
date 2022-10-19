@@ -58,7 +58,7 @@ lvim.plugins = {
     end,
   },
   -- {'edkolev/tmuxline.vim'},
-  -- {'zhou13/vim-easyescape'},
+  { 'zhou13/vim-easyescape' },
   { 'tpope/vim-surround' },
   -- {{{ fugitive.vim - premier git plugin for vim
   {
@@ -79,7 +79,9 @@ lvim.plugins = {
   {
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
-    config = require("todo-comments").setup {}
+    config = function()
+      require("todo-comments").setup({})
+    end,
   },
   { 'dhruvasagar/vim-zoom' },
   {

@@ -2,14 +2,12 @@
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 lvim.lsp.on_attach_callback = function(client, bufnr)
   require('aerial').on_attach(client, bufnr)
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---   --Enable completion triggered by <c-x><c-o>
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+  --   local function buf_set_option(...)
+  --     vim.api.nvim_buf_set_option(bufnr, ...)
+  --   end
+  --   --Enable completion triggered by <c-x><c-o>
+  --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
-
-lvim.builtin.lualine.sections.lualine_c = { "aerial" }
 
 -- local function on_attach(client, bufnr)
 --   require('lvim.lsp').common_on_attach(client, bufnr)

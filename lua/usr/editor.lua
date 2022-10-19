@@ -45,6 +45,3 @@ vim.o.cmdheight    = 1
 cmd([[
 au BufReadPost * silent! if line("'\"") > 0 && line("'\"") <= line("$") | silent! exe "normal g`\"zz" | endif
 ]])
-
--- g.bufferline = {icons = 'numbers'}
-g.bufferline = { icons = 'numbers' }

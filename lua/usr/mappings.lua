@@ -27,10 +27,6 @@ lvim.keys.normal_mode["[ "] = [[mnO<esc>`n]]
 --Use Y in normal mode to copy until end of line
 map('n', 'Y', 'y$', { noremap = true })
 
--- Comments (temp solution for gcc)
-lvim.builtin.comment.toggler.line = 'gccc'
-map('n', [[gcc]], [[Vgc<esc>]], { noremap = false })
-
 -- Moving lines
 map('n', [[<M-C-J>]], [[:m .+1<CR>==]], { noremap = true })
 map('n', [[<M-C-K>]], [[:m .-2<CR>==]], { noremap = true })
@@ -74,6 +70,10 @@ map('n', [[<M-C-H>]], [[:bprev!<CR>]], { noremap = true })
 --   },
 -- }
 
+-- Buffer search with <leader>bb and buffer prev with <leader>bp
+lvim.builtin.which_key.mappings.b.b = { "<cmd>Telescope buffers<CR>", "Find" }
+lvim.builtin.which_key.mappings.b.p = { "<cmd>BufferLineCyclePrev<CR>", "Previous" }
+lvim.builtin.which_key.mappings.b.f = { "<cmd>BufferLineTogglePin<CR>", "Toggle pin" }
 -- Quit all windows
 lvim.builtin.which_key.mappings["Q"] = { ":qa<CR>", "Exit nvim" }
 -- Sessions with auto-sessions and session-lens
