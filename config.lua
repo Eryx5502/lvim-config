@@ -10,7 +10,6 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
 lvim.colorscheme = "tokyonight"
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.diagnostics.float.focusable = true
@@ -28,6 +27,7 @@ lvim.builtin.terminal.float_opts.width = function(term)
 end
 lvim.use_icons = true
 lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
 -- lvim.builtin.nvimtree.show_icons.git = 1
 lvim.builtin.project.patterns = { ".git" }
 lvim.builtin.project.detection_methods = { "pattern" }
@@ -52,21 +52,29 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.indent.enabled = true
 
 -- generic LSP settings
 
 -- ---@usage disable automatic installation of servers
-lvim.lsp.automatic_servers_installation = true
+-- lvim.lsp.automatic_servers_installation = true
+lvim.lsp.installer.setup.automatic_servers_installation = true
 
 -- ---@usage Select which servers should be configured manually. Requires `:LvimCacheRest` to take effect.
 -- See the full default list `:lua print(vim.inspect(lvim.lsp.override))`
 -- vim.list_extend(lvim.lsp.override, { "pyright" })
 
 -- ---@usage setup a server -- see: https://www.lunarvim.org/languages/#overriding-the-default-configuration
--- local opts = {} -- check the lspconfig documentation for a list of all possible options
--- require("lvim.lsp.manager").setup("pylsp", opts)
+local opts = {} -- check the lspconfig documentation for a list of all possible options
+require("lvim.lsp.manager").setup("pylsp", opts)
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
+lvim.format_on_save = {
+  ---@usage pattern string pattern used for the autocommand (Default: '*')
+  pattern = "*.py,*.ts,*.lua",
+  ---@usage timeout number timeout in ms for the format request (Default: 1000)
+  timeout = 2000,
+}
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "black", filetypes = { "python" } },
@@ -78,7 +86,7 @@ formatters.setup {
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
     extra_args = { "--print-with", "100" },
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact" },
+    filetypes = { "typescript", "typescriptreact, json" },
   },
 }
 

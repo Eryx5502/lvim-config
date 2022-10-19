@@ -10,7 +10,7 @@ g.maplocalleader = 'ñ'
 opt.cursorlineopt = 'screenline'
 opt.encoding = 'utf-8'
 opt.clipboard = ''
-opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 --[[
   tabstop:          Width of tab character
@@ -23,7 +23,7 @@ opt.softtabstop    = 2
 opt.shiftwidth     = 2
 opt.expandtab      = true
 -- Word wrapping
-opt.textwidth      = 80
+opt.textwidth      = 0
 opt.wrap           = true
 opt.linebreak      = true
 opt.list           = false
@@ -38,6 +38,8 @@ opt.incsearch      = true
 opt.hlsearch       = true
 -- Font for gui (neovide)
 opt.guifont        = 'MesloLGS_NF:h10'
+-- Command line height
+vim.o.cmdheight    = 1
 
 -- When editing a file, always jump to the last known cursor position.
 cmd([[
