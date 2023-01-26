@@ -26,6 +26,34 @@ local function environment(trigger, name)
   )
 end
 
+-- Function for defining \ref{trig:} snippets
+local function ref(trigger, name)
+  local command
+  if trigger == "eq" then
+    command = '\\eqref'
+  else
+    command = '\\ref'
+  end
+  return s(
+    'ref' .. trigger,
+    {
+      t(name .. '~' .. command .. '{' .. trigger .. ':'), i(1),
+      t('}'), i(0)
+    }
+  )
+end
+
+-- Function for defining \label{trig:} snippets
+local function label(trigger)
+  return s(
+    'lab' .. trigger,
+    {
+      t('\\label{' .. trigger .. ':'), i(0),
+      t('}')
+    }
+  )
+end
+
 -- Function for defining snippets as \mathbb{X}, triggered by XX
 local function mathbb(content)
   return s(
@@ -285,6 +313,38 @@ tex.autosnippets = {
   environment('example', 'example'),
   environment('remark', 'remark'),
   environment('assump', 'assumption'),
+  -- References
+  ref('sec', 'Section'),
+  ref('subsec', 'Subsection'),
+  ref('thm', 'Theorem'),
+  ref('prop', 'Proposition'),
+  ref('lemma', 'Lemma'),
+  ref('corol', 'Corollary'),
+  ref('def', 'Definition'),
+  ref('example', 'Example'),
+  ref('remark', 'Remark'),
+  ref('assump', 'Assumption'),
+  ref('eq', 'Equation'),
+  -- Eqref without Equation~ in front
+  s(
+    'eqref',
+    {
+      t('\\eqref{eq:'), i(1),
+      t('}'), i(0)
+    }
+  ),
+  -- Labels
+  label('sec'),
+  label('subsec'),
+  label('thm'),
+  label('prop'),
+  label('lemma'),
+  label('corol'),
+  label('def'),
+  label('example'),
+  label('remark'),
+  label('assump'),
+  label('eq'),
   -- Sets
   mathbb('R'),
   mathbb('C'),
@@ -371,13 +431,16 @@ tex.autosnippets = {
   -- wrappers
   wrap({ trigger = 'hatt', command = 'hat' }),
   wrap({ trigger = 'dott', command = 'dot' }),
+  wrap({ trigger = 'tildee', command = 'tilde' }),
   wrap({ trigger = 'over', command = 'overline' }),
   -- commands
+  command({ trigger = "citee", command = 'cite' }),
   command({ trigger = ':=', command = 'coloneqq', condition = ismath, noargs = true }),
   command({ trigger = '!=', command = 'neq', condition = ismath, noargs = true }),
   command({ trigger = '<=', command = 'leq', condition = ismath, noargs = true }),
   command({ trigger = '>=', command = 'geq', condition = ismath, noargs = true }),
   command({ trigger = 'cc', command = 'subset', condition = ismath, noargs = true }),
+  command({ trigger = 'xx', command = 'times', condition = ismath, noargs = true }),
   command({ trigger = 'too', command = 'to', noargs = true, condition = ismath }),
   command({ trigger = 'mapss', command = 'mapsto', noargs = true, condition = ismath }),
   command({ trigger = 'inn', command = 'in', noargs = true, condition = ismath }),
