@@ -71,7 +71,7 @@ map('n', [[<M-C-H>]], [[:bprev!<CR>]], { noremap = true })
 -- }
 
 -- Buffer search with <leader>bb and buffer prev with <leader>bp
-lvim.builtin.which_key.mappings.b.b = { "<cmd>Telescope buffers<CR>", "Find" }
+lvim.builtin.which_key.mappings.b.b = { "<cmd>Telescope buffers initial_mode=insert<CR>", "Find" }
 lvim.builtin.which_key.mappings.b.p = { "<cmd>BufferLineCyclePrev<CR>", "Previous" }
 lvim.builtin.which_key.mappings.b.f = { "<cmd>BufferLineTogglePin<CR>", "Toggle pin" }
 -- Quit all windows
@@ -86,6 +86,7 @@ lvim.builtin.which_key.mappings["S"] = { "<cmd>SearchSession<CR>", "Sessions" }
 --   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 -- }
 -- Use which-key to add extra bindings with the leader-key prefix
+lvim.builtin.which_key.mappings["r"] = { "<cmd>Telescope oldfiles<CR>", "Recent files" }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Trouble",
@@ -97,3 +98,6 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnostics" },
   t = { "<cmd>Trouble todo<cr>", "TODO" },
 }
+
+-- Debuger mappings on usr.plugin-config.dap
+-- Debuger mappings on usr.plugin-config.dap

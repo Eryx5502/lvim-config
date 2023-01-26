@@ -54,7 +54,7 @@ lvim.builtin.treesitter.indent.enabled = true
 
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.automatic_servers_installation = true
-lvim.lsp.diagnostics.virtual_text = true
+lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.diagnostics.float.focusable = true
 lvim.lsp.float.focusable = true
 
@@ -65,8 +65,8 @@ lvim.lsp.installer.setup.automatic_servers_installation = true
 -- vim.list_extend(lvim.lsp.override, { "pyright" })
 
 -- ---@usage setup a server -- see: https://www.lunarvim.org/languages/#overriding-the-default-configuration
-local opts = {} -- check the lspconfig documentation for a list of all possible options
-require("lvim.lsp.manager").setup("pylsp", opts)
+-- local opts = {} -- check the lspconfig documentation for a list of all possible options
+-- require("lvim.lsp.manager").setup("pylsp", opts)
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 lvim.format_on_save = {
@@ -124,3 +124,4 @@ require("usr.plugins")
 require("usr.luasnip")
 require("usr.nvim-cmp")
 require('usr.plugin-settings.aerial')
+require('usr.plugin-settings.dap')

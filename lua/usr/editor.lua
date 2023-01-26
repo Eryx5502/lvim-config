@@ -8,6 +8,7 @@ g.mapleader = ' '
 g.maplocalleader = 'ñ'
 
 opt.cursorlineopt = 'screenline'
+opt.scrolloff = 0
 opt.encoding = 'utf-8'
 opt.clipboard = ''
 opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"

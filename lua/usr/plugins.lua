@@ -39,6 +39,7 @@ lvim.plugins = {
     run = ':call doge#install()',
     config = function()
       vim.g.doge_doc_standard_python = 'numpy'
+      vim.g.doge_mapping = '<Leader>D'
     end,
   },
   { 'ggandor/lightspeed.nvim' },
@@ -122,7 +123,27 @@ lvim.plugins = {
       require("nvim-ts-autotag").setup()
     end,
   },
-  --[[ -- Python
+  -- Python
+  {
+    'mfussenegger/nvim-dap-python',
+    config = function()
+      require('dap-python').setup('~/.pyenv/versions/debugpy/bin/python')
+      require('dap').configurations.python[1].env = { PYTHONPATH = vim.fn.getcwd() }
+      -- table.insert(require('dap').configurations.python, {
+      --   type = 'python',
+      --   request = 'launch',
+      --   name = 'Python: file inside a project',
+      --   program = '${file}',
+      --   cwd = vim.fn.getcwd(),
+      --   env = { PYTHONPATH = vim.fn.getcwd() },
+      --   pythonPath = function()
+      --     return 'python'
+      --   end,
+      --   -- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+      -- })
+    end
+  },
+  --[[ 
   'numirias/semshi', {'do': ':UpdateRemotePlugins'},
   'jeetsukumaran/vim-pythonsense', {'for': 'python'},
   'Vimjas/vim-python-pep8-indent', {'for': 'python'},
