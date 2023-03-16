@@ -123,5 +123,4 @@ require("usr.plugins")
 -- -- Plugin's config
 require("usr.luasnip")
 require("usr.nvim-cmp")
-require('usr.plugin-settings.aerial')
 require('usr.plugin-settings.dap')

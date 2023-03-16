@@ -30,10 +30,6 @@ lvim.plugins = {
   --     }
   --   end,
   -- },
-  -- Symbol navigation
-  {
-    'stevearc/aerial.nvim',
-  },
   {
     'kkoomen/vim-doge',
     run = ':call doge#install()',
