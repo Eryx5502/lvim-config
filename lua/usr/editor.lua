@@ -10,7 +10,6 @@ g.maplocalleader = 'ñ'
 opt.cursorlineopt = 'screenline'
 opt.scrolloff = 0
 opt.encoding = 'utf-8'
-opt.clipboard = ''
 opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 --[[
@@ -46,3 +45,22 @@ vim.o.cmdheight    = 1
 cmd([[
 au BufReadPost * silent! if line("'\"") > 0 && line("'\"") <= line("$") | silent! exe "normal g`\"zz" | endif
 ]])
+
+-- opt.clipboard = ''
+-- Clipboard WSL2
+local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
+-- Suggested on :h clipboard
+if in_wsl then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'win32yank.exe -i',
+      ['*'] = 'win32yank.exe -i',
+    },
+    paste = {
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf'
+    },
+    cache_enabled = true,
+  }
+end
