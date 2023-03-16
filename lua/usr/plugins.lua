@@ -14,7 +14,7 @@ lvim.plugins = {
   },
   {
     'rmagatti/session-lens',
-    requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
+    dependencies = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
     config = function()
       require('session-lens').setup({})
     end
@@ -32,7 +32,7 @@ lvim.plugins = {
   -- },
   {
     'kkoomen/vim-doge',
-    run = ':call doge#install()',
+    build = ':call doge#install()',
     config = function()
       vim.g.doge_doc_standard_python = 'numpy'
       vim.g.doge_mapping = '<Leader>D'
@@ -60,7 +60,7 @@ lvim.plugins = {
   -- {{{ fugitive.vim - premier git plugin for vim
   {
     "tpope/vim-fugitive",
-    opt = true,
+    lazy = true,
     cmd = {
       "G", "Git", "Gdiffsplit", "Gvdiffsplit", "Gedit", "Gsplit",
       "Gread", "Gwrite", "Ggrep", "Glgrep", "Gmove",
@@ -69,13 +69,13 @@ lvim.plugins = {
   },
   -- {
   --   'akinsho/bufferline.nvim',
-  --   requires = 'kyazdani42/nvim-web-devicons',
+  --   dependencies = 'kyazdani42/nvim-web-devicons',
   --   config = require("bufferline").setup(),
   -- },
   -- 'scrooloose/nerdcommenter',
   {
     'folke/todo-comments.nvim',
-    requires = 'nvim-lua/plenary.nvim',
+    dependencies = 'nvim-lua/plenary.nvim',
     config = function()
       require("todo-comments").setup({})
     end,
@@ -84,7 +84,7 @@ lvim.plugins = {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufRead",
-    setup = function()
+    init = function()
       vim.g.indentLine_enabled = 1
       vim.g.indent_blankline_char = "▏"
       vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "dashboard", "latex", "tex" }
@@ -96,8 +96,8 @@ lvim.plugins = {
   -- LaTeX
   {
     'lervag/vimtex',
-    opt = false,
-    requires = 'KeitaNakamura/tex-conceal.vim',
+    lazy = false,
+    dependencies = 'KeitaNakamura/tex-conceal.vim',
     config = function()
       require('usr.plugin-settings.vimtex')
     end
