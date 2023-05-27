@@ -13,11 +13,12 @@ inoremap <C-b> \textbf{}<left>
 let b:AutoPairs = {'(':')', '[':']', '{':'}','|':'|'}
 
 syntax on
-" highlight Conceal guifg=#FF7733
-" highlight Conceal guifg=#E6B673
+" set conceallevel=2
+" highlight! link Conceal texStatement
 "highlight SpellBad gui=undercurl guifg=#FF3333 guisp=Red
 highlight SpellBad gui=undercurl guisp=Red
 
-set conceallevel=0
 " make completion only after 3-letter words
 lua require('cmp').setup.buffer({completion = {keyword_length = 3}})
+call vimtex#init()
+highlight link texTodo TodoBgTODO

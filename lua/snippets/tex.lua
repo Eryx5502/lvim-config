@@ -271,19 +271,28 @@ tex.snippets = {
     }
   ),
   s("i", t("\\item")),
+  s(
+    "beg",
+    {
+      t("\\begin{"), i(1, "env"), t({ "}", "  " }),
+      i(0),
+      t({ "", "" }),
+      f(function(args, snip) return "\\end{" .. args[1][1] .. "}" end, { 1 }),
+    }
+  ),
 }
 
 tex.autosnippets = {
   -- Math regions
-  -- s(
-  --   "$",
-  --   {
-  --     t("$"),
-  --     i(1),
-  --     t("$"),
-  --     i(0),
-  --   }
-  -- ),
+  s(
+    "$",
+    {
+      t("$"),
+      i(1),
+      t("$"),
+      i(0),
+    }
+  ),
   s(
     "eqq",
     {
@@ -295,11 +304,14 @@ tex.autosnippets = {
   ),
   -- Environments
   s(
-    "beg",
+    { trig = "^(%s*)beg", regTrig = true },
     {
+      f(regex_cap_group(1), {}),
       t("\\begin{"), i(1, "env"), t({ "}", "  " }),
+      f(regex_cap_group(1), {}),
       i(0),
       t({ "", "" }),
+      f(regex_cap_group(1), {}),
       f(function(args, snip) return "\\end{" .. args[1][1] .. "}" end, { 1 }),
     }
   ),
@@ -405,7 +417,7 @@ tex.autosnippets = {
     { condition = ismath }
   ),
   s(
-    { trig = '([^$ ]+)/', regTrig = true },
+    { trig = '([^$ ]+)//', regTrig = true },
     {
       t("\\frac{"),
       f(regex_cap_group(1), {}),

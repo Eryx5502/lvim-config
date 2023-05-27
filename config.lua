@@ -22,6 +22,14 @@ lvim.builtin.terminal.float_opts.width = function(term)
   return math.min(math.floor(vim.o.columns * 0.9), 150)
 end
 lvim.use_icons = true
+-- Lualine
+local components = require("lvim.core.lualine.components")
+
+lvim.builtin.lualine.sections.lualine_a = { "mode" }
+lvim.builtin.lualine.sections.lualine_y = {
+  components.spaces,
+  components.location
+}
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
 -- lvim.builtin.nvimtree.show_icons.git = 1
@@ -48,15 +56,14 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.indent.enabled = true
+lvim.builtin.which_key.setup.plugins.spelling.enabled = false
 
 -- generic LSP settings
 
 -- ---@usage disable automatic installation of servers
--- lvim.lsp.automatic_servers_installation = true
 lvim.lsp.diagnostics.virtual_text = false
 lvim.lsp.diagnostics.float.focusable = true
 lvim.lsp.float.focusable = true
-
 lvim.lsp.installer.setup.automatic_servers_installation = true
 
 -- ---@usage Select which servers should be configured manually. Requires `:LvimCacheRest` to take effect.
@@ -70,7 +77,7 @@ lvim.lsp.installer.setup.automatic_servers_installation = true
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 lvim.format_on_save = {
   ---@usage pattern string pattern used for the autocommand (Default: '*')
-  pattern = "*.py,*.ts,*.lua",
+  pattern = "*.py,*.ts,*.js,*.lua",
   ---@usage timeout number timeout in ms for the format request (Default: 1000)
   timeout = 2000,
 }
