@@ -1,6 +1,8 @@
 lvim.plugins = {
-  -- General
+  -- Themes
   { "folke/tokyonight.nvim" },
+  -- { "oxfist/night-owl.nvim" },
+  -- General
   {
     'rmagatti/auto-session',
     config = function()
@@ -40,6 +42,11 @@ lvim.plugins = {
   },
   { 'ggandor/lightspeed.nvim' },
   { 'christoomey/vim-tmux-navigator' },
+  -- Sticky buffers
+  {
+    'stevearc/stickybuf.nvim',
+    opts = {},
+  },
   -- Signature help
   {
     "ray-x/lsp_signature.nvim",

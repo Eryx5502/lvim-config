@@ -10,13 +10,14 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "tokyonight-moon"
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.telescope.defaults.layout_config.width = 0.95
 lvim.builtin.terminal.active = true
+lvim.builtin.terminal.direction = 'horizontal'
 lvim.builtin.terminal.open_mapping = '<C-T>'
 lvim.builtin.terminal.float_opts.width = function(term)
   return math.min(math.floor(vim.o.columns * 0.9), 150)
@@ -61,9 +62,7 @@ lvim.builtin.which_key.setup.plugins.spelling.enabled = false
 -- generic LSP settings
 
 -- ---@usage disable automatic installation of servers
-lvim.lsp.diagnostics.virtual_text = false
-lvim.lsp.diagnostics.float.focusable = true
-lvim.lsp.float.focusable = true
+vim.diagnostic.config({ float = true })
 lvim.lsp.installer.setup.automatic_servers_installation = true
 
 -- ---@usage Select which servers should be configured manually. Requires `:LvimCacheRest` to take effect.

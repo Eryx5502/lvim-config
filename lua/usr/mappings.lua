@@ -101,5 +101,7 @@ lvim.builtin.which_key.mappings["t"] = {
   T = { "<cmd>Trouble todo<cr>", "TODO worspace" },
 }
 
--- Debuger mappings on usr.plugin-config.dap
+-- Terminal mappings
+require('usr.plugin-settings.toggleterm')
+
 -- Debuger mappings on usr.plugin-config.dap
