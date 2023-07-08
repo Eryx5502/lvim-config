@@ -27,6 +27,9 @@ lvim.use_icons = true
 -- Enable virtual text blame for current line
 lvim.builtin.gitsigns.opts.current_line_blame=true
 
+-- Bufferline
+lvim.builtin.bufferline.highlights.buffer_selected.italic = false
+
 -- Lualine
 local components = require("lvim.core.lualine.components")
 
