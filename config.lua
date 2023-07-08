@@ -122,10 +122,10 @@ linters.setup {
 
 
 -- Include files
-require("usr.editor")
-require("usr.mappings")
-require("usr.plugins")
+reload("usr.editor")
+reload("usr.mappings")
+reload("usr.plugins")
 -- -- Plugin's config
-require("usr.luasnip")
-require("usr.nvim-cmp")
-require('usr.plugin-settings.dap')
+reload("usr.luasnip")
+reload("usr.nvim-cmp")
+reload('usr.plugin-settings.dap')
