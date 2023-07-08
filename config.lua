@@ -23,6 +23,10 @@ lvim.builtin.terminal.float_opts.width = function(term)
   return math.min(math.floor(vim.o.columns * 0.9), 150)
 end
 lvim.use_icons = true
+
+-- Enable virtual text blame for current line
+lvim.builtin.gitsigns.opts.current_line_blame=true
+
 -- Lualine
 local components = require("lvim.core.lualine.components")
 

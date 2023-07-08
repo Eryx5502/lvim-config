@@ -101,6 +101,10 @@ lvim.builtin.which_key.mappings["t"] = {
   T = { "<cmd>Trouble todo<cr>", "TODO worspace" },
 }
 
+-- Git extra bindings
+lvim.builtin.which_key.mappings.g.L = {"<cmd>G blame<CR>", ":G blame"}
+lvim.builtin.which_key.mappings.g.O = {"<cmd>G difftool HEAD~1<CR>", "Changes in last commit"}
+
 -- Terminal mappings
 require('usr.plugin-settings.toggleterm')
 

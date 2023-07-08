@@ -64,16 +64,34 @@ lvim.plugins = {
   -- {'edkolev/tmuxline.vim'},
   { 'zhou13/vim-easyescape' },
   { 'tpope/vim-surround' },
-  -- {{{ fugitive.vim - premier git plugin for vim
   {
     "tpope/vim-fugitive",
     lazy = true,
     cmd = {
       "G", "Git", "Gdiffsplit", "Gvdiffsplit", "Gedit", "Gsplit",
       "Gread", "Gwrite", "Ggrep", "Glgrep", "Gmove",
-      "Gdelete", "Gremove", "Gbrowse",
+      "GDelete", "GRemove", "GBrowse",
     },
   },
+  -- PR and Issue edit from nvim
+  {
+    "pwntester/octo.nvim",
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require("octo").setup()
+    end,
+  },
+  -- see diffview on a nice interface
+  {
+    "sindrets/diffview.nvim",
+    event = "BufRead",
+  },
+  { 'tpope/vim-rhubarb' }, -- For enabling GBrowse for github
+  { 'shumphrey/fugitive-gitlab.vim' }, -- For enabling GBrowse for gitlab
   -- {
   --   'akinsho/bufferline.nvim',
   --   dependencies = 'kyazdani42/nvim-web-devicons',
@@ -151,7 +169,7 @@ lvim.plugins = {
       -- })
     end
   },
-  --[[ 
+  --[[
   'numirias/semshi', {'do': ':UpdateRemotePlugins'},
   'jeetsukumaran/vim-pythonsense', {'for': 'python'},
   'Vimjas/vim-python-pep8-indent', {'for': 'python'},
