@@ -12,6 +12,9 @@ opt.scrolloff = 0
 opt.encoding = 'utf-8'
 opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 --[[
   tabstop:          Width of tab character
   softtabstop:      Fine tunes the amount of white space to be added
