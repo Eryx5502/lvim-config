@@ -32,6 +32,16 @@ lvim.plugins = {
   --     }
   --   end,
   -- },
+  --
+  -- Treesitter text objects
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    config = function()
+      require("usr.plugin-settings.treesitter").textobjects_setup()
+    end,
+    dependencies = "nvim-treesitter/nvim-treesitter",
+  },
   {
     'kkoomen/vim-doge',
     build = ':call doge#install()',

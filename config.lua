@@ -25,12 +25,13 @@ end
 lvim.use_icons = true
 
 -- Enable virtual text blame for current line
-lvim.builtin.gitsigns.opts.current_line_blame=true
+lvim.builtin.gitsigns.opts.current_line_blame = true
 
 -- Bufferline
 lvim.builtin.bufferline.highlights.buffer_selected.italic = false
 
 -- Lualine
+-- lvim.builtin.lualine.options.globalstatus = false
 local components = require("lvim.core.lualine.components")
 
 lvim.builtin.lualine.sections.lualine_a = { "mode" }
@@ -105,7 +106,7 @@ formatters.setup {
 -- -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { command = "flake8", filetypes = { "python" } },
+  { command = "flake8",  filetypes = { "python" } },
   { command = "eslint_d" },
   --   {
   --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
@@ -132,8 +133,9 @@ linters.setup {
 reload("usr.editor")
 reload("usr.mappings")
 reload("usr.plugins")
+reload('usr.autocommands')
 -- -- Plugin's config
 reload("usr.luasnip")
 reload("usr.nvim-cmp")
 reload('usr.plugin-settings.dap')
-reload('usr.autocommands')
+reload("usr.plugin-settings.telescope")
