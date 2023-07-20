@@ -74,6 +74,7 @@ map('n', [[<M-C-H>]], [[:bprev!<CR>]], { noremap = true })
 lvim.builtin.which_key.mappings.b.b = { "<cmd>Telescope buffers initial_mode=insert<CR>", "Find" }
 lvim.builtin.which_key.mappings.b.p = { "<cmd>BufferLineCyclePrev<CR>", "Previous" }
 lvim.builtin.which_key.mappings.b.f = { "<cmd>BufferLineTogglePin<CR>", "Toggle pin" }
+lvim.builtin.which_key.mappings["D"] = {":Neogen<CR>", "Generate docs"}
 -- Quit all windows
 lvim.builtin.which_key.mappings["Q"] = { ":qa<CR>", "Exit nvim" }
 -- Sessions with auto-sessions and session-lens

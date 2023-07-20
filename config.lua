@@ -15,7 +15,6 @@ lvim.colorscheme = "tokyonight-moon"
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
-lvim.builtin.telescope.defaults.layout_config.width = 0.95
 lvim.builtin.terminal.active = true
 lvim.builtin.terminal.direction = 'horizontal'
 lvim.builtin.terminal.open_mapping = '<C-T>'

@@ -43,12 +43,13 @@ lvim.plugins = {
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
   {
-    'kkoomen/vim-doge',
-    build = ':call doge#install()',
-    config = function()
-      vim.g.doge_doc_standard_python = 'numpy'
-      vim.g.doge_mapping = '<Leader>D'
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function(_)
+      require('neogen').setup({ snippet_engine = "luasnip" })
     end,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
   },
   { 'ggandor/lightspeed.nvim' },
   { 'christoomey/vim-tmux-navigator' },
@@ -100,7 +101,7 @@ lvim.plugins = {
     "sindrets/diffview.nvim",
     event = "BufRead",
   },
-  { 'tpope/vim-rhubarb' }, -- For enabling GBrowse for github
+  { 'tpope/vim-rhubarb' },             -- For enabling GBrowse for github
   { 'shumphrey/fugitive-gitlab.vim' }, -- For enabling GBrowse for gitlab
   -- {
   --   'akinsho/bufferline.nvim',
