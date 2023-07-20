@@ -27,6 +27,12 @@ map('n', [[<CR>k]], [[mnO<esc>`n]], { noremap = true })
 --Use Y in normal mode to copy until end of line
 map('n', 'Y', 'y$', { noremap = true })
 
+-- lsp mappings
+lvim.lsp.buffer_mappings.normal_mode['gR'] = lvim.lsp.buffer_mappings.normal_mode['gr']
+lvim.lsp.buffer_mappings.normal_mode["gr"] = { function()
+  require('telescope.builtin').lsp_references({ initial_mode = 'insert' })
+end, "Search references" }
+
 -- Moving lines
 map('n', [[<M-C-J>]], [[:m .+1<CR>==]], { noremap = true })
 map('n', [[<M-C-K>]], [[:m .-2<CR>==]], { noremap = true })
@@ -42,39 +48,17 @@ map('n', [[<C-Down>]], [[<C-Y>]], { noremap = true })
 -- Changing buffers
 map('n', [[<M-C-L>]], [[:bnext!<CR>]], { noremap = true })
 map('n', [[<M-C-H>]], [[:bprev!<CR>]], { noremap = true })
--- tab completion (not working)
--- map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
--- map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
--- map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
--- map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 -- Plugin mappings ----------------------------------------------
 -- TODO-Comments
 -- map('n', '<leader>T', ':TodoTelescope<CR>')
 
--- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
--- local _, actions = pcall(require, "telescope.actions")
--- lvim.builtin.telescope.defaults.mappings = {
---   -- for input mode
---   i = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---     ["<C-n>"] = actions.cycle_history_next,
---     ["<C-p>"] = actions.cycle_history_prev,
---   },
---   -- for normal mode
---   n = {
---     ["<C-j>"] = actions.move_selection_next,
---     ["<C-k>"] = actions.move_selection_previous,
---   },
--- }
 
 -- Buffer search with <leader>bb and buffer prev with <leader>bp
 lvim.builtin.which_key.mappings.b.b = { "<cmd>Telescope buffers initial_mode=insert<CR>", "Find" }
 lvim.builtin.which_key.mappings.b.p = { "<cmd>BufferLineCyclePrev<CR>", "Previous" }
 lvim.builtin.which_key.mappings.b.f = { "<cmd>BufferLineTogglePin<CR>", "Toggle pin" }
-lvim.builtin.which_key.mappings["D"] = {":Neogen<CR>", "Generate docs"}
+lvim.builtin.which_key.mappings["D"] = { ":Neogen<CR>", "Generate docs" }
 -- Quit all windows
 lvim.builtin.which_key.mappings["Q"] = { ":qa<CR>", "Exit nvim" }
 -- Sessions with auto-sessions and session-lens
@@ -88,6 +72,8 @@ lvim.builtin.which_key.mappings["S"] = { "<cmd>SearchSession<CR>", "Sessions" }
 -- }
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.setup.plugins.presets.z = true
+lvim.builtin.which_key.setup.plugins.presets.g = true
+
 lvim.builtin.which_key.mappings["r"] = { "<cmd>Telescope oldfiles<CR>", "Recent files" }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["t"] = {
@@ -103,8 +89,8 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 
 -- Git extra bindings
-lvim.builtin.which_key.mappings.g.L = {"<cmd>G blame<CR>", ":G blame"}
-lvim.builtin.which_key.mappings.g.O = {"<cmd>G difftool HEAD~1<CR>", "Changes in last commit"}
+lvim.builtin.which_key.mappings.g.L = { "<cmd>G blame<CR>", ":G blame" }
+lvim.builtin.which_key.mappings.g.O = { "<cmd>G difftool HEAD~1<CR>", "Changes in last commit" }
 
 -- Terminal mappings
 require('usr.plugin-settings.toggleterm')

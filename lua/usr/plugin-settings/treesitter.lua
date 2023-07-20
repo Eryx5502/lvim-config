@@ -57,8 +57,8 @@ function M.textobjects_setup()
         enable = true,
         border = 'none',
         peek_definition_code = {
-          ["<leader>pf"] = "@function.outer",
-          ["<leader>pF"] = "@class.outer",
+          ["gpf"] = "@function.outer",
+          ["gpc"] = "@class.outer",
         },
       },
     },
