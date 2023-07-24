@@ -17,12 +17,15 @@ end
 
 
 local autoCommands = {
-    -- other autocommands
-    folds = {
-      -- {"BufReadPost,FileReadPost", "*", "normal zR"},
-      {"BufWinLeave", "*.*", "silent mkview"},
-      {"BufWinEnter", "*.*", "silent! loadview"}
-    }
+  -- other autocommands
+  folds = {
+    -- {"BufReadPost,FileReadPost", "*", "normal zR"},
+    {"BufWinLeave", "*.*", "silent mkview"},
+    {"BufWinEnter", "*.*", "silent! loadview"}
+  },
+  tsc_make = {
+    {"Filetype", "typescript,typescriptreact,javascript", [[setlocal makeprg=npx\ tsc\ \\\|\ sed\ 's/(\\(.*\\),\\(.*\\)):/:\\1:\\2:/']]}
+  }
 }
 
 M.nvim_create_augroups(autoCommands)

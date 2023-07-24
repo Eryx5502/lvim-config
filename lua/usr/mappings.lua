@@ -50,8 +50,8 @@ map('n', [[<M-C-L>]], [[:bnext!<CR>]], { noremap = true })
 map('n', [[<M-C-H>]], [[:bprev!<CR>]], { noremap = true })
 
 -- Plugin mappings ----------------------------------------------
--- TODO-Comments
--- map('n', '<leader>T', ':TodoTelescope<CR>')
+-- Telescope search quickfix
+lvim.builtin.which_key.mappings.s.q = {":Telescope quickfix initial_mode=insert<CR>", "Quickfix search"}
 
 
 -- Buffer search with <leader>bb and buffer prev with <leader>bp
