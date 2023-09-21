@@ -121,6 +121,77 @@ lvim.plugins = {
       },
     }
   },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+      {
+        "luukvbaal/statuscol.nvim",
+        config = function()
+          if vim.fn.has "nvim-0.9" == 1 then
+            local builtin = require "statuscol.builtin"
+            require("statuscol").setup {
+              relculright = true,
+              segments = {
+                { text = { "%s" }, click = "v:lua.ScSa" },
+                { text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
+                { text = { " ", builtin.foldfunc, " " }, click = "v:lua.ScFa" },
+              },
+            }
+          end
+        end
+      }
+    },
+    event = "VeryLazy",
+    opts = {
+      -- INFO: Uncomment to use treeitter as fold provider, otherwise nvim lsp is used
+      -- provider_selector = function(bufnr, filetype, buftype)
+      --   return { "treesitter", "indent" }
+      -- end,
+      open_fold_hl_timeout = 400,
+      close_fold_kinds = { "imports", "comment" },
+      preview = {
+        win_config = {
+          border = { "", "─", "", "", "", "─", "", "" },
+          -- winhighlight = "Normal:Folded",
+          winblend = 0,
+        },
+        mappings = {
+          scrollU = "<C-k>",
+          scrollD = "<C-j>",
+          jumpTop = "[",
+          jumpBot = "]",
+        },
+      },
+    },
+    init = function ()
+      require("usr.plugin-settings.nvim-ufo").init()
+    end,
+    config = function (_, opts)
+      require("usr.plugin-settings.nvim-ufo").setup(opts)
+    end,
+  },
+  -- {
+  --   "luukvbaal/statuscol.nvim", config = function()
+  --     local builtin = require("statuscol.builtin")
+  --     require("statuscol").setup({
+  --       -- configuration goes here, for example:
+  --       relculright = true,
+  --       segments = {
+  --         { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+  --         {
+  --           sign = { name = { "Diagnostic" }, maxwidth = 2, auto = true },
+  --           click = "v:lua.ScSa"
+  --         },
+  --         { text = { builtin.lnumfunc }, click = "v:lua.ScLa", },
+  --         {
+  --           sign = { name = { ".*" }, maxwidth = 2, colwidth = 1, auto = true, wrap = true },
+  --           click = "v:lua.ScSa"
+  --         },
+  --       }
+  --     })
+  --   end,
+  -- },
   { 'dhruvasagar/vim-zoom' },
   {
     "lukas-reineke/indent-blankline.nvim",

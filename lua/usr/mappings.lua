@@ -95,4 +95,6 @@ lvim.builtin.which_key.mappings.g.O = { "<cmd>G difftool HEAD~1<CR>", "Changes i
 -- Terminal mappings
 require('usr.plugin-settings.toggleterm')
 
+require("usr.plugin-settings.nvim-ufo").keymaps()
+
 -- Debuger mappings on usr.plugin-config.dap

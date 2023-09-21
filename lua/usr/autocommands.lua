@@ -18,11 +18,12 @@ end
 
 local autoCommands = {
   -- other autocommands
-  folds = {
-    -- {"BufReadPost,FileReadPost", "*", "normal zR"},
-    {"BufWinLeave", "*.*", "silent mkview"},
-    {"BufWinEnter", "*.*", "silent! loadview"}
-  },
+  -- folds = {
+  --   {"BufReadPost,FileReadPost", "*", "normal zR"},
+  --   -- to save and load views (i.e., the folded/unfolded state of folds)
+  --   -- {"BufWinLeave", "*.*", "silent mkview"},
+  --   -- {"BufWinEnter", "*.*", "silent! loadview"}
+  -- },
   tsc_make = {
     {"Filetype", "typescript,typescriptreact,javascript", [[setlocal makeprg=npx\ tsc\ \\\|\ sed\ 's/(\\(.*\\),\\(.*\\)):/:\\1:\\2:/']]}
   }
