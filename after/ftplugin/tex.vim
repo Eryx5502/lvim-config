@@ -22,3 +22,13 @@ highlight SpellBad gui=undercurl guisp=Red
 lua require('cmp').setup.buffer({completion = {keyword_length = 3}})
 call vimtex#init()
 highlight link texTodo TodoBgTODO
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = false,
+    },
+  },
+}
+EOF
