@@ -18,10 +18,10 @@ local map = vim.api.nvim_set_keymap
 
 -- General mappings ---------------------------------------------
 lvim.builtin.which_key.mappings["<leader>"] = { "<cmd>Telescope resume<CR>", "Resume Telescope" }
+lvim.builtin.which_key.mappings["j"] = { [[mno<esc>`n]], "Blank line below" }
+lvim.builtin.which_key.mappings["k"] = { [[mnO<esc>`n]], "Blank line above" }
 -- breaks the line in the current possition
 lvim.keys.normal_mode["zn"] = 'a<cr><esc>k$'
-map('n', [[<CR>j]], [[mno<esc>`n]], { noremap = true })
-map('n', [[<CR>k]], [[mnO<esc>`n]], { noremap = true })
 --Clear search highlight
 -- map('n', '<leader>,', ':nohlsearch<CR>', {noremap = true, silent = true})
 --Use Y in normal mode to copy until end of line
